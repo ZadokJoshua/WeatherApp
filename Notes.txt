@@ -1,1 +1,2 @@
-﻿ObservableCollection<T> is a list aware of Changes. It updates with insertions and deletions.
+﻿- ObservableCollection<T> is a list aware of Changes. It updates with insertions and deletions.
+- Bind the ListView itemsource to Cities so that each city will be a data template.

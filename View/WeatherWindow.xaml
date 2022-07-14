@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp.View"
         xmlns:vm="clr-namespace:WeatherApp.ViewModel"
+        xmlns:converters="clr-namespace:WeatherApp.ViewModel.ValueConverters"
         mc:Ignorable="d"
         Title="Weather App" Height="600" Width="400">
     
     <Window.Resources>
         <!--Created an instance (vm) of the WeatherVM class in XAML-->
         <vm:WeatherVM x:Key="vm"/>
+        <converters:BoolTORainConverter x:Key="boolToRain"/>
     </Window.Resources>
     
     <Grid DataContext="{StaticResource vm}">
@@ -26,11 +28,13 @@
                     Content="Search"
                     Command="{Binding SearchCommand}"
                     CommandParameter="{Binding Query}"/>
-            <ListView>
+            
+            <ListView ItemsSource="{Binding Cities}"
+                      SelectedValue="{Binding SelectedCity}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <TextBlock/>
+                            <TextBlock Text="{Binding LocalizedName}"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -54,6 +58,10 @@
                            Foreground="#f4f4f8"
                            Margin="20 0"
                            FontSize="18"/>
+                <TextBlock Text="{Binding HasPrecipitation, Converter={StaticResource boolToRain}}"
+                           Foreground="#f4f4f8"
+                           Margin="20 0"
+                           FontSize="16"/>
             </StackPanel>
             <TextBlock Grid.Column="1"
                        VerticalAlignment="Center"
