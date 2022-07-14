@@ -1,0 +1,1 @@
+﻿ObservableCollection<T> is a list aware of Changes. It updates with insertions and deletions.

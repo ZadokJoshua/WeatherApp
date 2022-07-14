@@ -53,5 +53,9 @@ namespace WeatherApp.ViewModel.Helpers
             return currentConditions;
         }
 
+        internal static Task GetCities()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
